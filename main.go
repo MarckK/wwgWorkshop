@@ -1,16 +1,21 @@
 package main
 
-import "fmt"
-
-func average(xs []float64) float64 {
-	total := 0.0
-	for _, v := range xs {
-		total += v
-	}
-	return total / float64(len(xs))
-}
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
-	xs := []float64{98, 93, 77, 82, 83}
-	fmt.Println(average(xs))
+	http.HandleFunc("/hello", HelloWorld)
+	http.HandleFunc("/goodbye", GoodbyeWorld)
+	http.ListenAndServe(":9000", http.DefaultServeMux)
+}
+
+func HelloWorld(rw http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(rw, "Hello")
+}
+
+func GoodbyeWorld(rw http.ResponseWriter, r *http.Request) {
+	name := r.URL.Query().Get("name")
+	fmt.Fprint(rw, "Goodbye ", name)
 }
