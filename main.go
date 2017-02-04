@@ -7,14 +7,28 @@ import (
 	"github.com/MarckK/wwg/animals"
 )
 
-var kittens []animals.Kitten
+var pets []animals.Pet
 
 func main() {
-	kittens = []animals.Kitten{
-		animals.Kitten{
+	pets = []animals.Pet{
+		&animals.Kitten{
 			Name: "Tigg",
 			Hobbies: []string{
 				"Playing with wool",
+				"Eating",
+			},
+		},
+		&animals.Kitten{
+			Name: "Pearl",
+			Hobbies: []string{
+				"Hunting mice",
+				"Climbing trees",
+			},
+		},
+		&animals.Dog{
+			Name: "Beau",
+			Hobbies: []string{
+				"Barking",
 				"Eating",
 			},
 		},
@@ -27,7 +41,7 @@ func main() {
 }
 
 func ListKittens(rw http.ResponseWriter, r *http.Request) {
-	data, err := json.Marshal(kittens)
+	data, err := json.Marshal(pets)
 	if err != nil {
 		rw.WriteHeader(http.StatusInternalServerError)
 		return
