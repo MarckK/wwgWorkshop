@@ -1,8 +1,8 @@
 package animals
 
 type Dog struct {
-	Name  string
-	Sound string
+	Name    string
+	Hobbies []string
 }
 
 func (d *Dog) SetName(name string) {
@@ -11,6 +11,14 @@ func (d *Dog) SetName(name string) {
 
 func (d *Dog) GetName() string {
 	return d.Name
+}
+
+func (d *Dog) SetHobbies(hobbies []string) {
+	d.Hobbies = hobbies
+}
+
+func (d *Dog) GetHobbies() []string {
+	return d.Hobbies
 }
 
 func (d *Dog) Bark() string {
