@@ -5,4 +5,5 @@ type Pet interface {
 	GetName() string
 	SetHobbies(hobbies []string)
 	GetHobbies() []string
+	IncrementLikeCounter() int
 }
