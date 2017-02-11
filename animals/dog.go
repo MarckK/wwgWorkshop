@@ -27,6 +27,6 @@ func (d *Dog) Bark() string {
 }
 
 func (d *Dog) IncrementLikeCounter() int {
-	d.Like += 1
+	d.Like++
 	return d.Like
 }

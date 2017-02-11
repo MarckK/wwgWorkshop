@@ -23,6 +23,6 @@ func (k *Kitten) GetHobbies() []string {
 }
 
 func (k *Kitten) IncrementLikeCounter() int {
-	k.Like += 1
+	k.Like++
 	return k.Like
 }

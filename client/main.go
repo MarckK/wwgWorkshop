@@ -14,10 +14,6 @@ type Pet struct {
 	Hobbies []string
 }
 
-// var pets []Pet
-// var pets Pets
-//the above 2 lines mean same thing as below line
-
 type Pets []Pet
 
 func (a Pets) Len() int {
@@ -30,7 +26,6 @@ func (a Pets) Swap(i, j int) {
 
 func (a Pets) Less(i, j int) bool {
 	return a[i].Name > a[j].Name
-	// return len(a[i].Hobbies) < len(a[j].Hobbies)
 }
 
 func main() {
@@ -47,13 +42,9 @@ func main() {
 	pets := Pets{}
 	err = json.Unmarshal(data, &pets)
 
-	// log.Println(string(data))
-	// log.Println(pets)
-
 	sort.Sort(pets)
 
 	for _, pet := range pets {
-		// log.Println(pet)
 		fmt.Printf("Name: %v Hobbies %v\n", pet.Name, pet.Hobbies)
 	}
 }
