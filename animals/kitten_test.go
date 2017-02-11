@@ -6,20 +6,6 @@ package animals
 
 import "testing"
 
-// func TestKSetHobbiesSetsTheHobbies(t *testing.T) {
-// 	hobbies := []string{"Hunting"}
-// 	kitten := Kitten{}
-// 	AssertSetsHobbies(t, &kitten, hobbies)
-// }
-//
-// func AssertSetsHobbies(t *testing.T, pet Pet, hobbies []string) {
-// 	pet.SetHobbies(hobbies)
-//
-// 	if !reflect.DeepEqual(pet.GetHobbies(), hobbies) {
-// 		t.Fail()
-// 	}
-// }
-
 func TestKGetHobbiesGetsTheHobbies(t *testing.T) {
 	hobbies := []string{"Hunting"}
 	kitten := Kitten{Hobbies: hobbies}

@@ -53,39 +53,46 @@ func TestSetNameSetsTheNameForAllPets(t *testing.T) {
 func AssertSetNameSetsTheName(t *testing.T, pet Pet, name string) {
 	pet.SetName(name)
 
-	if kitten, ok := pet.(*Kitten); ok {
-		if kitten.Name != name {
+	switch p := pet.(type) {
+	case *Kitten:
+		if p.Name != name {
+			t.Fail()
+		}
+	case *Dog:
+		if p.Name != name {
 			t.Fail()
 		}
 	}
 }
 
-// func TestGetNameGetsTheNameForAllPets(t *testing.T) {
-// 	kitten := Kitten{Name: "Pearl"}
-//
-// 	if kitten.GetName() != "Pearl" {
-// 		t.Fail()
-// 	}
-// }
+func TestGetNameGetsTheNameForAllPets(t *testing.T) {
+	kitten := Kitten{Name: "Pearl"}
+
+	if kitten.GetName() != "Pearl" {
+		t.Fail()
+	}
+}
 
 // func AssertGetNameGetsTheName(t *testing.T, pet Pet, name string) {
 //   pet.GetName(name)
 //
-//   if
+//   if kitten, ok := pet.(*Kitten); ok {
+//     if
+//   }
 // }
 
-func TestSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t *testing.T) {
-	kitten := Kitten{}
-	AssertSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t, &kitten, "Pearl")
-
-	dog := Dog{}
-	AssertSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t, &dog, "Beau")
-}
-
-func AssertSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t *testing.T, pet Pet, name string) {
-	pet.SetName(name)
-
-	if pet.GetName() != name {
-		t.Fail()
-	}
-}
+// func TestSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t *testing.T) {
+// 	kitten := Kitten{}
+// 	AssertSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t, &kitten, "Pearl")
+//
+// 	dog := Dog{}
+// 	AssertSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t, &dog, "Beau")
+// }
+//
+// func AssertSetNameSetsTheNameAndTestGetNameGetsTheNameForAllPets(t *testing.T, pet Pet, name string) {
+// 	pet.SetName(name)
+//
+// 	if pet.GetName() != name {
+// 		t.Fail()
+// 	}
+// }
