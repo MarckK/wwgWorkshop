@@ -1,22 +1,26 @@
 package animals
 
-import (
-	"reflect"
-	"testing"
-)
+//I had to put a K in front of all these test names or else golang complained (the compiler?)--in any case got an error message.  Is there a way to refactor these tests so test all the Pets for common functionality and then test animals, like Dog, for seperate functionality?
 
-func KTestSetHobbiesSetsTheHobbies(t *testing.T) {
-	hobbies := []string{"Hunting"}
-	kitten := Kitten{}
+//Also: even with these additional tests my coverage has not gone above 38.5%
 
-	kitten.SetHobbies(hobbies)
+import "testing"
 
-	if !reflect.DeepEqual(kitten.GetHobbies(), hobbies) {
-		t.Fail()
-	}
-}
+// func TestKSetHobbiesSetsTheHobbies(t *testing.T) {
+// 	hobbies := []string{"Hunting"}
+// 	kitten := Kitten{}
+// 	AssertSetsHobbies(t, &kitten, hobbies)
+// }
+//
+// func AssertSetsHobbies(t *testing.T, pet Pet, hobbies []string) {
+// 	pet.SetHobbies(hobbies)
+//
+// 	if !reflect.DeepEqual(pet.GetHobbies(), hobbies) {
+// 		t.Fail()
+// 	}
+// }
 
-func KTestGetHobbiesGetsTheHobbies(t *testing.T) {
+func TestKGetHobbiesGetsTheHobbies(t *testing.T) {
 	hobbies := []string{"Hunting"}
 	kitten := Kitten{Hobbies: hobbies}
 
@@ -25,7 +29,7 @@ func KTestGetHobbiesGetsTheHobbies(t *testing.T) {
 	}
 }
 
-func KTestSetNameSetsTheName(t *testing.T) {
+func TestKSetNameSetsTheName(t *testing.T) {
 	kitten := Kitten{}
 
 	kitten.SetName("Pearl")
@@ -35,7 +39,7 @@ func KTestSetNameSetsTheName(t *testing.T) {
 	}
 }
 
-func KTestGetNameGetsTheName(t *testing.T) {
+func TestKGetNameGetsTheName(t *testing.T) {
 	kitten := Kitten{Name: "Pearl"}
 
 	if kitten.GetName() != "Pearl" {
